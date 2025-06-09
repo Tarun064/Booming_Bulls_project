@@ -1,90 +1,64 @@
 'use client';
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection } from "./AnimatedSection";
-import { useState, useEffect } from 'react';
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 export default function Payouts() {
-  const [payoutAmount, setPayoutAmount] = useState(999151);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPayoutAmount(prev => prev + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const formattedPayout = `$${payoutAmount.toLocaleString()}+`;
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   return (
-    <section className="py-20 text-white relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-20"
         >
-          <source src="https://framerusercontent.com/assets/xECpz8zWZNwZhoPNVva63Z5xs.mp4" type="video/mp4" />
+          <source src="/trading-bg.mp4" type="video/mp4" />
         </video>
-        {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/70" />
       </div>
 
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <AnimatedSection
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold mb-16"
-        >
-          We've Paid Out Over $1M to Traders
-        </AnimatedSection>
-        
-        <AnimatedSection
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8"
-        >
-          <p className="text-2xl mb-4">Your Trust is Our Fuel—Power Up with Abcd</p>
-          <div className="text-6xl font-bold text-blue-500 mb-8">{formattedPayout}</div>
-        </AnimatedSection>
-
-        <AnimatedSection
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <p className="text-xl mb-8">Are you Next?</p>
-          <Button 
-            size="lg" 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-xl"
-            onClick={scrollToTop}
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold mb-8 text-white"
           >
-            Start Trading Now
-          </Button>
-        </AnimatedSection>
+            Fast & Secure Payouts
+          </AnimatedSection>
+          <AnimatedSection
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl text-gray-300 mb-12"
+          >
+            Get your earnings instantly with our advanced payment system
+          </AnimatedSection>
+          <AnimatedSection
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-xl">
+              Start Trading Now
+            </Button>
+          </AnimatedSection>
 
-        <p className="text-gray-300 mb-8">
-          Experience lightning-fast withdrawals with our advanced payment system. Get your earnings instantly, anytime, anywhere.
-        </p>
-        <div className="text-4xl font-bold text-white mb-4">
-          $1,234,567
+          <p className="text-gray-300 mb-8">
+            Experience lightning-fast withdrawals with our advanced payment system. Get your earnings instantly, anytime, anywhere.
+          </p>
+          <div className="text-4xl font-bold text-white mb-4">
+            $1,234,567
+          </div>
+          <p className="text-gray-400">
+            Total Payouts to Traders
+          </p>
         </div>
-        <p className="text-gray-400">
-          Total Payouts to Traders
-        </p>
       </div>
     </section>
   );
