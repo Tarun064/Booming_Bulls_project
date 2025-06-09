@@ -1,32 +1,18 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, HTMLMotionProps } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-interface AnimatedSectionProps {
-  children: ReactNode;
+interface AnimatedSectionProps extends HTMLMotionProps<"div"> {
+  children: React.ReactNode;
   className?: string;
-  initial?: any;
-  animate?: any;
-  whileInView?: any;
-  transition?: any;
 }
 
-export function AnimatedSection({
-  children,
-  className,
-  initial,
-  animate,
-  whileInView,
-  transition,
-}: AnimatedSectionProps) {
+export function AnimatedSection({ children, className, ...props }: AnimatedSectionProps) {
   return (
     <motion.div
-      className={className}
-      initial={initial}
-      animate={animate}
-      whileInView={whileInView}
-      transition={transition}
+      className={cn(className)}
+      {...props}
     >
       {children}
     </motion.div>

@@ -55,6 +55,23 @@ const plans = [
   }
 ];
 
+interface Plan {
+  name: string;
+  description: string;
+  initialCapital: string;
+  spread: string;
+  commission: string;
+  leverage: string;
+  lotSize: string;
+  tradeLimit: string;
+  positions: string;
+  stopOut: string;
+  marginCall: string;
+  swap: string;
+  risk: string;
+  assets: string;
+}
+
 export default function PricingPlans() {
   return (
     <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -190,7 +207,7 @@ export default function PricingPlans() {
   );
 }
 
-function PlanCard({ plan, highlight }: { plan: any; highlight?: boolean }) {
+function PlanCard({ plan, highlight }: { plan: Plan; highlight?: boolean }) {
   return (
     <div className={clsx(
       "relative flex flex-col h-full p-8",

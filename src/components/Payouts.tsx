@@ -75,6 +75,16 @@ export default function Payouts() {
             Start Trading Now
           </Button>
         </AnimatedSection>
+
+        <p className="text-gray-300 mb-8">
+          Experience lightning-fast withdrawals with our advanced payment system. Get your earnings instantly, anytime, anywhere.
+        </p>
+        <div className="text-4xl font-bold text-white mb-4">
+          $1,234,567
+        </div>
+        <p className="text-gray-400">
+          Total Payouts to Traders
+        </p>
       </div>
     </section>
   );
