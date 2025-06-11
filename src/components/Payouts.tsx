@@ -2,8 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Payouts() {
+  const [count, setCount] = useState(1234567);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-20 bg-black relative overflow-hidden">
       {/* Video Background */}
@@ -15,7 +27,8 @@ export default function Payouts() {
           playsInline
           className="w-full h-full object-cover opacity-20"
         >
-          <source src="/trading-bg.mp4" type="video/mp4" />
+          <source src="/videos/trading-bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
       </div>
 
@@ -51,9 +64,14 @@ export default function Payouts() {
           <p className="text-gray-300 mb-8">
             Experience lightning-fast withdrawals with our advanced payment system. Get your earnings instantly, anytime, anywhere.
           </p>
-          <div className="text-4xl font-bold text-white mb-4">
-            $1,234,567
-          </div>
+          <motion.div 
+            className="text-4xl font-bold text-white mb-4"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            ${count.toLocaleString()}
+          </motion.div>
           <p className="text-gray-400">
             Total Payouts to Traders
           </p>
