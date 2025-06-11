@@ -16,6 +16,10 @@ module.exports = {
           '50%': { opacity: 0.5 },
         },
       },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+      },
     },
   },
   plugins: [],
